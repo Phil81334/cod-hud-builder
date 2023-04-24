@@ -1,8 +1,8 @@
 # cod-hud-builder
-quickly design the layout for your new hud. generates the file for you once done.
+Quickly design the layout for your new cod hud.
 
 
-beta version 1.0
+Beta version 1.0
 -bugs/glitches to be expected
 -will try to make small incremental updates here and there
 
