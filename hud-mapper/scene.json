@@ -1,0 +1,13 @@
+{
+    "Text 0": {
+        "pos": {
+            "x": 127.0,
+            "y": 114.0
+        },
+        "width": 150.0,
+        "height": 30.0,
+        "elemType": "Text",
+        "text": "Text 0",
+        "text_type": "exp text"
+    }
+}
