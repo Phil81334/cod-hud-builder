@@ -375,6 +375,12 @@ class PropertyEditor(Ui_Form):
                 elem.textscale = self.textscale.text()
             case "visible":
                 elem.visible = self.visible.text()
+            case "action":
+                elem.action = self.action.text()
+            case "mouseEnter":
+                elem.mouseEnter = self.mouseEnter.text()
+            case "mouseExit":
+                elem.mouseExit = self.mouseExit.text()
             case "style":
                 elem.style = self.style.currentText()
             case "textfont":
