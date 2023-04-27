@@ -25,4 +25,4 @@ Result of above example test:
 https://imgur.com/CRZ0TVq
 
 To Fix:
-Text align not updating
+-text align not updating
