@@ -26,3 +26,4 @@ https://imgur.com/CRZ0TVq
 
 To Fix:
 -text align not updating
+-account for when user uses colons on text elems
