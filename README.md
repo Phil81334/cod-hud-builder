@@ -23,3 +23,6 @@ Showcase example test: (1hr+)
 
 Result of above example test:
 https://imgur.com/CRZ0TVq
+
+To Fix:
+-text align not updating
