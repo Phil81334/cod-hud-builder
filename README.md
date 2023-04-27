@@ -25,5 +25,5 @@ Result of above example test: [27-04-23]
 https://imgur.com/CRZ0TVq
 
 To Fix:
--text align not updating
+-text align not saving
 -account for when user uses colons on text elems
