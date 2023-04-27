@@ -3,8 +3,8 @@ Quickly design the layout for your new cod hud.
 
 
 Beta version 1.0
--bugs/glitches to be expected
--will try to make small incremental updates here and there
+-bugs to be expected
+-will try to make small updates here and there
 
 Feel free to share, modify etc
 
