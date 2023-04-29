@@ -237,9 +237,23 @@ class Scene(QGraphicsScene):
                             elem.text_type = item_data["text_type"]
                             elem.textItem.setPlainText(elem.text)
 
+                            elem.textfont = item_data["textfont"]
+                            elem.textscale = item_data["textscale"]
+                            elem.textstyle = item_data["textstyle"]
+
+                            elem.textalign = item_data["textalign"]
+                            if elem.textalign not in self.main_window.propertyEditor.text_align_default_values and not elem.text_align_overridden:
+                                elem.text_align_overridden = True
+                            
+                            elem.decoration = item_data["decoration"]
+                            elem.forecolor = item_data["forecolor"]
+
                         elif elem.elemType == "Material":
                             elem.background_material_text = item_data["background_material_text"]
                             elem.background_material_text_type = item_data["background_material_text_type"]
+                        
+                        elem.visible = item_data["visible"]
+                        elem.forecolor = item_data["forecolor"]
                         
                         self.main_window.propertyEditor.update(elem)
                 print(f"successfully opened file '{filename}")
@@ -275,7 +289,14 @@ class Scene(QGraphicsScene):
                     "height": height,
                     "elemType": elemType,
                     "text": elem.text,
-                    "text_type": elem.text_type
+                    "text_type": elem.text_type,
+                    "visible": elem.visible,
+                    "textfont": elem.textfont,
+                    "textscale": elem.textscale,
+                    "textstyle": elem.textstyle,
+                    "textalign": elem.textalign,
+                    "decoration": elem.decoration,
+                    "forecolor": elem.forecolor
                 }
             elif elemType == "Material":
                 item_data[str(elem.name)] = {
@@ -284,14 +305,17 @@ class Scene(QGraphicsScene):
                     "height": height,
                     "elemType": elemType,
                     "background_material_text": elem.background_material_text,
-                    "background_material_text_type": elem.background_material_text_type
+                    "background_material_text_type": elem.background_material_text_type,
+                    "visible": elem.visible,
+                    "forecolor": elem.forecolor
                 }
             else:
                 item_data[str(elem.name)] = {
                     "pos": pos,
                     "width": width,
                     "height": height,
-                    "elemType": elemType
+                    "elemType": elemType,
+                    "visible": elem.visible
                 }
 
         json_path = os.path.join(os.getcwd(), "scene.json")
@@ -570,8 +594,7 @@ class Scene(QGraphicsScene):
     
         self.updateMenuAttributesAndElem_partsPos(elem)
 
-    def updateMenuAttributesAndElem_partsPos(self, elem):
-        
+    def updateMenuAttributesAndElem_partsPos(self, elem: Elem) -> None:
         rect = elem.rect()
         elemType = elem.elemType
         if elemType == 'Text':
@@ -588,7 +611,8 @@ class Scene(QGraphicsScene):
                 elem.rect_h_align = "HORIZONTAL_ALIGN_LEFT"
                 elem.rect_v_align = "VERTICAL_ALIGN_TOP"
                 if elemType == "Text":
-                    elem.textalign = "ITEM_ALIGN_MIDDLE_LEFT"
+                    if not elem.text_align_overridden:
+                        elem.textalign = "ITEM_ALIGN_MIDDLE_LEFT"
                 
                 if not elem.manipulatorHandle.movingViaHandle:
                     handle = elem.manipulatorHandle
@@ -601,7 +625,8 @@ class Scene(QGraphicsScene):
                 elem.rect_h_align = "HORIZONTAL_ALIGN_RIGHT"
                 elem.rect_v_align = "VERTICAL_ALIGN_TOP"
                 if elemType == "Text":
-                    elem.textalign = "ITEM_ALIGN_MIDDLE_RIGHT"
+                    if not elem.text_align_overridden:
+                        elem.textalign = "ITEM_ALIGN_MIDDLE_RIGHT"
         
                 if not elem.manipulatorHandle.movingViaHandle:
                     handle = elem.manipulatorHandle
@@ -613,7 +638,8 @@ class Scene(QGraphicsScene):
                 elem.rect_h_align = "HORIZONTAL_ALIGN_LEFT"
                 elem.rect_v_align = "VERTICAL_ALIGN_BOTTOM"
                 if elemType == "Text":
-                    elem.textalign = "ITEM_ALIGN_MIDDLE_LEFT"
+                    if not elem.text_align_overridden:
+                        elem.textalign = "ITEM_ALIGN_MIDDLE_LEFT"
 
                 if not elem.manipulatorHandle.movingViaHandle:
                     handle = elem.manipulatorHandle
@@ -625,7 +651,8 @@ class Scene(QGraphicsScene):
                 elem.rect_h_align = "HORIZONTAL_ALIGN_RIGHT"
                 elem.rect_v_align = "VERTICAL_ALIGN_BOTTOM"
                 if elemType == "Text":
-                    elem.textalign = "ITEM_ALIGN_MIDDLE_RIGHT"
+                    if not elem.text_align_overridden:
+                        elem.textalign = "ITEM_ALIGN_MIDDLE_RIGHT"
                 
                 if not elem.manipulatorHandle.movingViaHandle:
                     handle = elem.manipulatorHandle

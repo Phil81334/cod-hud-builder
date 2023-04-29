@@ -47,6 +47,11 @@ class PropertyEditor(Ui_Form):
         # btn
         self.material_selector_btn.clicked.connect(self.select_material)
 
+        # inform user they cant use the '¬' symbol for text elems, text
+        self.text.setPlaceholderText("The `¬' symbol is reserved, do not use!")
+
+        self.text_align_default_values = ['ITEM_ALIGN_MIDDLE_LEFT', 'ITEM_ALIGN_MIDDLE_RIGHT']
+
     def set_text_placeholder_text(self) -> None:
 
         elem = self.scene.activeElem
@@ -371,6 +376,10 @@ class PropertyEditor(Ui_Form):
 
                 elem.text = text
                 elem.textItem.setPlainText(elem.text)
+            case "textalign":
+                elem.textalign = self.textalign.currentText()
+                if elem.textalign not in self.text_align_default_values and not elem.text_align_overridden:
+                    elem.text_align_overridden = True
             case "textscale":
                 elem.textscale = self.textscale.text()
             case "visible":
@@ -414,7 +423,9 @@ class PropertyEditor(Ui_Form):
                         elem.rect_h_align = "HORIZONTAL_ALIGN_LEFT"
                         elem.rect_v_align = "VERTICAL_ALIGN_TOP"
                         if elemType == "Text":
-                            elem.textalign = "ITEM_ALIGN_MIDDLE_LEFT"
+                            # check if user has overridden the default(auto adjusted) value. if so, leave as is.
+                            if not elem.text_align_overridden:
+                                elem.textalign = "ITEM_ALIGN_MIDDLE_LEFT"
                         elem.menu_rect_x = str(elem.rect_x)
                         elem.menu_rect_y = str(elem.rect_y)
 
@@ -429,7 +440,8 @@ class PropertyEditor(Ui_Form):
                         elem.rect_h_align = "HORIZONTAL_ALIGN_RIGHT"
                         elem.rect_v_align = "VERTICAL_ALIGN_TOP"
                         if elemType == "Text":
-                            elem.textalign = "ITEM_ALIGN_MIDDLE_RIGHT"
+                            if not elem.text_align_overridden:
+                                elem.textalign = "ITEM_ALIGN_MIDDLE_RIGHT"
                         elem.menu_rect_x = str(elem.rect_x - scene.width)
                         elem.menu_rect_y = str(elem.rect_y)
 
@@ -444,7 +456,8 @@ class PropertyEditor(Ui_Form):
                         elem.rect_h_align = "HORIZONTAL_ALIGN_LEFT"
                         elem.rect_v_align = "VERTICAL_ALIGN_BOTTOM"
                         if elemType == "Text":
-                            elem.textalign = "ITEM_ALIGN_MIDDLE_LEFT"
+                            if not elem.text_align_overridden:
+                                elem.textalign = "ITEM_ALIGN_MIDDLE_LEFT"
                         elem.menu_rect_x = str(elem.rect_x)
                         elem.menu_rect_y = str(elem.rect_y - scene.height)
 
@@ -459,7 +472,8 @@ class PropertyEditor(Ui_Form):
                         elem.rect_h_align = "HORIZONTAL_ALIGN_RIGHT"
                         elem.rect_v_align = "VERTICAL_ALIGN_BOTTOM"
                         if elemType == "Text":
-                            elem.textalign = "ITEM_ALIGN_MIDDLE_RIGHT"
+                            if not elem.text_align_overridden:
+                                elem.textalign = "ITEM_ALIGN_MIDDLE_RIGHT"
                         elem.menu_rect_x = str(elem.rect_x - scene.width)
                         elem.menu_rect_y = str(elem.rect_y - scene.height)
 

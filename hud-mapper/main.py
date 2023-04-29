@@ -210,11 +210,11 @@ class MainWindow(QMainWindow):
                     itemDefs += (
                         f"      {info.split('¬')[0]}\n"
                         "      {\n"
-                        f"        {info.split('¬')[1]}\n"
+                        ""+'\n'.join(info.split('¬')[1].split('~'))+"\n"
                         "      }\n"
                     )
                 else:
-                    itemDefs += f"      {info.split('¬')[0]}    {info.split('¬')[1]}\n"
+                    itemDefs += f"      {info.split('¬')[0]}\t{info.split('¬')[1]}\n"
             itemDefs += itemDefEnd
 
             elem.info.clear()
@@ -240,8 +240,10 @@ class MainWindow(QMainWindow):
             self.write_to_file(path, code)
         else:
             # find a name that doesnt exist
+            i = 1
             while os.path.exists(f"{path}"):
-                path = rf"{path.split('.')[0]}_{random.randint(0, 1000)}.{ext}"
+                path = rf"{desktop}\cod_hud_layout_{i}.{ext}"
+                i += 1
             self.write_to_file(path, code)
     
     def write_to_file(self, path, code) -> None:
