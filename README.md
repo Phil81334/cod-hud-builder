@@ -30,3 +30,7 @@ To Fix:
   
 -account for when user uses colons on text elems [Done ~ 29-04-23]
   '¬' is a reserved program keyword now, so do not use it.
+
+Updated:
+-button elem args for: (action, mouseEnter, mouseExit), now go on seperate lines
+  you need to seperate each arg via the '~' symbol
