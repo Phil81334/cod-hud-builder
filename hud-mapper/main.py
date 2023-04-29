@@ -171,56 +171,56 @@ class MainWindow(QMainWindow):
         elems = self.objectInspector.getSceneItemsInObjectInspectorOrder()
         for elem in elems:
             elem.info = []
-            elem.info.append(f'name:"{elem.name}"')
-            elem.info.append(f"rect:{elem.menu_rect_x} {elem.menu_rect_y} {elem.menu_rect_w} {elem.menu_rect_h} {elem.rect_h_align} {elem.rect_v_align}")
+            elem.info.append(f'name¬"{elem.name}"')
+            elem.info.append(f"rect¬{elem.menu_rect_x} {elem.menu_rect_y} {elem.menu_rect_w} {elem.menu_rect_h} {elem.rect_h_align} {elem.rect_v_align}")
             elemType = elem.elemType
             if elemType == "Text":
-                elem.info.append(f"type:{elem._type_}")
-                elem.info.append(f"forecolor:{elem.forecolor}")
+                elem.info.append(f"type¬{elem._type_}")
+                elem.info.append(f"forecolor¬{elem.forecolor}")
                 if elem.text_type == "text":
-                    elem.info.append(f'text:"{elem.text}"')
+                    elem.info.append(f'text¬"{elem.text}"')
                 else:
-                    elem.info.append(f'exp text: dvarString( "{elem.text}" )')
-                elem.info.append(f"textfont:{elem.textfont}")
-                elem.info.append(f"textscale:{elem.textscale}")
-                elem.info.append(f"textstyle:{elem.textstyle}")
-                elem.info.append(f"textalign:{elem.textalign}")
-                elem.info.append(f"visible:{elem.visible}")
+                    elem.info.append(f'exp text¬ dvarString( "{elem.text}" )')
+                elem.info.append(f"textfont¬{elem.textfont}")
+                elem.info.append(f"textscale¬{elem.textscale}")
+                elem.info.append(f"textstyle¬{elem.textstyle}")
+                elem.info.append(f"textalign¬{elem.textalign}")
+                elem.info.append(f"visible¬{elem.visible}")
                 if elem.decoration:
-                    elem.info.append(f"decoration:")
+                    elem.info.append(f"decoration¬")
             elif elemType == "Material":
-                elem.info.append(f"style:{elem.style}")
-                elem.info.append(f"forecolor:{elem.forecolor}")
+                elem.info.append(f"style¬{elem.style}")
+                elem.info.append(f"forecolor¬{elem.forecolor}")
                 if elem.background_material_text_type == "background":
-                    elem.info.append(f'background:"{elem.background_material_text}"')
+                    elem.info.append(f'background¬"{elem.background_material_text}"')
                 else:
-                    elem.info.append(f'exp material: dvarString( "{elem.background_material_text}" )')
-                elem.info.append(f"visible:{elem.visible}")
+                    elem.info.append(f'exp material¬ dvarString( "{elem.background_material_text}" )')
+                elem.info.append(f"visible¬{elem.visible}")
             elif elemType == "Button":
-                elem.info.append(f"type:{elem._type_}")
-                elem.info.append(f"visible:{elem.visible}")
-                elem.info.append(f"action:{elem.action}")
-                elem.info.append(f"mouseEnter:{elem.mouseEnter}")
-                elem.info.append(f"mouseExit:{elem.mouseExit}")
+                elem.info.append(f"type¬{elem._type_}")
+                elem.info.append(f"visible¬{elem.visible}")
+                elem.info.append(f"action¬{elem.action}")
+                elem.info.append(f"mouseEnter¬{elem.mouseEnter}")
+                elem.info.append(f"mouseExit¬{elem.mouseExit}")
 
             itemDefs += itemDefStart
             for j in range(len(elem.info)):
                 info = elem.info[j]
-                if info.split(':')[0] == "action" or info.split(':')[0] == "mouseEnter" or info.split(':')[0] == "mouseExit":
+                if info.split('¬')[0] == "action" or info.split('¬')[0] == "mouseEnter" or info.split('¬')[0] == "mouseExit":
                     itemDefs += (
-                        f"      {info.split(':')[0]}\n"
+                        f"      {info.split('¬')[0]}\n"
                         "      {\n"
-                        f"        {info.split(':')[1]}\n"
+                        f"        {info.split('¬')[1]}\n"
                         "      }\n"
                     )
                 else:
-                    itemDefs += f"      {info.split(':')[0]}    {info.split(':')[1]}\n"
+                    itemDefs += f"      {info.split('¬')[0]}    {info.split('¬')[1]}\n"
             itemDefs += itemDefEnd
 
             elem.info.clear()
             elem.info = None
         
-        footer = '\n\n\n/*\nAdd:\nmenufile,ui/file.extension to mod.csv\n#include "ui/file.extension" to hud.menu'+"(you'll have to figure out where exactly).\n*/"
+        footer = '\n\n\n/*\nAdd:\nmenufile,ui/filename.extension to mod.csv\n#include "ui/file.extension" to hud.menu'+"(you'll have to figure out where exactly).\n*/"
         code = f"{header}{itemDefs}{eof}{footer}"
         which = "console" if self.ui.code_output_console.isChecked() else 'file' if self.ui.code_output_file.isChecked() else 'both'
         actions = {

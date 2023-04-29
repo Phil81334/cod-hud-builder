@@ -6,9 +6,10 @@ from manipulatorHandle import ManipulatorHandle
 
 import os
 import sys
+from pathlib import Path
 
 class Elem(QGraphicsRectItem):
-    def __init__(self, main_window: QMainWindow, scene: QGraphicsScene, rect: QRectF, elemType: str):
+    def __init__(self, main_window: QMainWindow, scene: QGraphicsScene, rect: QRectF, elemType: str) -> None:
         super().__init__()
 
         self.main_window = main_window
@@ -106,7 +107,9 @@ class Elem(QGraphicsRectItem):
         self.quadrantIndicator.setVisible(self.main_window.ui.quadrant_indicator.isChecked())
 
     def addManipulatorHandle(self):
-        pixmap_path = rf"{os.getcwd()}\icons\others\manipulator_handle.png"
+        curr_dir = Path(f"{os.getcwd()}/icons/others/")
+        pixmap_path = curr_dir / "manipulator_handle.png"
+        print(f"pixmap path: {pixmap_path}")
 
         # script_dir = os.path.dirname(os.path.abspath(__file__))
         # pixmap_path = os.path.join(script_dir, "icons\others\manipulator_handle.png")
