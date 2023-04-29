@@ -22,8 +22,11 @@ Showcase example test: (1hr+) [27-04-23]
 https://www.youtube.com/watch?v=JV0oycK8gHo&ab_channel=PhilGibson
 
 Result of above example test: [27-04-23]
-https://imgur.com/CRZ0TVq
+https://imgur.com/UBKp26F
 
 To Fix:
--text align not saving
--account for when user uses colons on text elems
+-text align not saving [Done ~ 29-04-23]
+  will auto adjust until manually overridden
+  
+-account for when user uses colons on text elems [Done ~ 29-04-23]
+  '¬' is a reserved program keyword now, so do not use it.
