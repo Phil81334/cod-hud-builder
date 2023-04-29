@@ -1,3 +1,5 @@
+***View this doc in 'raw' mode, github's edit view and general view are completely different for some reason!***
+
 # cod-hud-builder
 Quickly design the layout for your new cod hud.
 
