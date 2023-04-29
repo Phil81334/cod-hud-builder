@@ -34,3 +34,16 @@ To Fix:
 Updated:
 -button elem args for: (action, mouseEnter, mouseExit), now go on seperate lines
   you need to seperate each arg via the '~' symbol
+
+-save feature will now also store:
+  text elem:
+    visible
+    textfont
+    textscale
+    textstyle
+    textalign
+    decoration
+    forecolor
+  material elem:
+    visible
+    forecolor
