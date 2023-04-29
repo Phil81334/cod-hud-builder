@@ -30,12 +30,14 @@ To Fix:
   
 -account for when user uses colons on text elems [Done ~ 29-04-23]
   '¬' is a reserved program keyword now. if you wish to use it, then you need to do so in the generated file, not the program.
+ 
+ -button elem arg indentation in generated file
 
 Updated:
--button elem args for: (action, mouseEnter, mouseExit), now go on seperate lines
+-button elem args for: (action, mouseEnter, mouseExit), now go on seperate lines [29-04-23]
   you need to seperate each arg via the '~' symbol
 
--save feature will now also store:
+-save feature will now also store: [29-04-23]
   text elem:
     visible
     textfont
