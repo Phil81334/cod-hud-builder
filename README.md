@@ -29,7 +29,7 @@ To Fix:
   will auto adjust until manually overridden
   
 -account for when user uses colons on text elems [Done ~ 29-04-23]
-  '¬' is a reserved program keyword now, so do not use it.
+  '¬' is a reserved program keyword now. if you wish to use it, then you need to do so in the generated file, not the program.
 
 Updated:
 -button elem args for: (action, mouseEnter, mouseExit), now go on seperate lines
