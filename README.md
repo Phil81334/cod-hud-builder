@@ -8,10 +8,10 @@ Beta version 1.0
 -will try to make small updates here and there
 
 Feel free to share, modify etc
-
 No credit necessary, Enjoy!
 
 -Phil81334 (CME)
+CME Discord: https://discord.gg/w6v6HuFRYD
 
 ###################
 Tested with waw and bo1, works fine in both. 
